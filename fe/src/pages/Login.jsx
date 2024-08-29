@@ -41,7 +41,7 @@ const Login = () => {
 
     return (
         <main className="absolute inset-0 top-16 flex items-center justify-center w-full h-screen bg-black p-4">
-            <div className="w-full max-w-[500px] bg-[#222222] p-8 rounded-xl">
+            <div className="w-full sm:w-full md:w-full max-w-[500px] bg-[#222222] p-8 rounded-xl">
                 <h2 className="text-2xl font-bold mb-6">Register</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
@@ -86,10 +86,7 @@ const Login = () => {
                             onChange={handleChange}
                         />
                     </div>
-                    <button
-                        type="submit"
-                        className="w-full bg-nav-color text-white py-2 px-4 rounded-xl hover:bg-nav-toggle-color"
-                    >
+                    <button type="submit" className="w-full bg-nav-color text-white py-2 px-4 rounded-xl hover:bg-nav-toggle-color">
                         Register
                     </button>
                 </form>
