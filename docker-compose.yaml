@@ -1,0 +1,148 @@
+version: '3.8'
+services:
+  postgres-master:
+    build: ./database_master
+    container_name: postgres-master
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+      - ./database_master:/docker-entrypoint-initdb.d
+    networks:
+      - medicat_network
+
+  postgres-slave:
+    build: ./database_slave
+    container_name: postgres-slave
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      REPLICATION_USER: ${REPLICATION_USER}
+      REPLICATION_PASSWORD: ${REPLICATION_PASSWORD}
+    depends_on:
+      - postgres-master
+    networks:
+      - medicat_network
+
+  redis:
+    build: ./redis
+    container_name: redis
+    ports:
+      - "${REDIS_PORT}:${REDIS_PORT}"
+    networks:
+      - medicat_network
+
+  rabbitmq:
+    build: ./rabbitmq
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
+    networks:
+      - medicat_network
+
+  elasticsearch:
+    build: ./elasticsearch
+    container_name: elasticsearch
+    environment:
+      discovery.type: single-node
+    ports:
+      - "${ELASTICSEARCH_PORT}:${ELASTICSEARCH_PORT}"
+    networks:
+      - medicat_network
+
+  kibana:
+    build: ./kibana
+    container_name: kibana
+    ports:
+      - "${KIBANA_PORT}:${KIBANA_PORT}"
+    networks:
+      - medicat_network
+    depends_on:
+      - elasticsearch
+
+  logstash:
+    build: ./logstash
+    container_name: logstash
+    ports:
+      - "${LOGSTASH_PORT}:${LOGSTASH_PORT}"
+    networks:
+      - medicat_network
+    depends_on:
+      - elasticsearch
+
+  prometheus:
+    build: ./prometheus
+    container_name: prometheus
+    ports:
+      - "${PROMETHEUS_PORT}:${PROMETHEUS_PORT}"
+    networks:
+      - medicat_network
+
+  grafana:
+    build: ./grafana
+    container_name: grafana
+    ports:
+      - "${GRAFANA_PORT}:${GRAFANA_PORT}"
+    networks:
+      - medicat_network
+    depends_on:
+      - prometheus
+  
+  api_gateway:
+    build: ./api_gateway
+    container_name: api_gateway
+    networks:
+      - medicat_network
+    ports:
+    - "8083:8080"
+  
+  media_service:
+    build: ./media_service
+    container_name: media_service
+    networks:
+      - medicat_network
+    ports:
+    - "8081:8080"
+  
+  user_service:
+    build: ./user_service
+    container_name: user_service
+    networks:
+      - medicat_network
+    ports:
+    - "8084:8080"
+
+  auth_service:
+    build: ./auth_service
+    container_name: auth_service
+    networks:
+      - medicat_network
+    ports:
+    - "8082:8080"
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    networks:
+      - medicat_network
+    depends_on:
+      - logstash
+    ports:
+    - "80:80"
+    - "443:443"
+    
+volumes:
+  pg_data:
+
+networks:
+  medicat_network:
+    driver: bridge
