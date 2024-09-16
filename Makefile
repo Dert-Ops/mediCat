@@ -15,8 +15,9 @@ build:
 logs:
 	docker compose logs -f
 
-restart:
+re:
 	docker compose down
+	docker compose build
 	docker compose up -d
 
 init-replication:

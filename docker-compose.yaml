@@ -134,11 +134,16 @@ services:
     container_name: frontend
     networks:
       - medicat_network
-    depends_on:
-      - logstash
     ports:
     - "80:80"
     - "443:443"
+    depends_on:
+    - auth_service
+    - user_service
+    - media_service
+    - postgres-slave
+    - redis
+
     
 volumes:
   pg_data:
