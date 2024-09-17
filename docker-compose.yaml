@@ -67,6 +67,16 @@ services:
     networks:
       - medicat_network
 
+  logstash:
+    build: ./logstash
+    container_name: logstash
+    ports:
+      - "${LOGSTASH_PORT}:${LOGSTASH_PORT}"
+    networks:
+      - medicat_network
+    depends_on:
+      - elasticsearch
+
   kibana:
     build: ./kibana
     container_name: kibana
@@ -77,15 +87,13 @@ services:
     networks:
       - medicat_network
 
-  logstash:
-    build: ./logstash
-    container_name: logstash
-    ports:
-      - "${LOGSTASH_PORT}:${LOGSTASH_PORT}"
-    networks:
-      - medicat_network
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:6.5.1
     depends_on:
       - elasticsearch
+    volumes:
+        - ./logstash/filebeat.yml:/usr/share/filebeat/filebeat.yml
+        - ./logs/:/logs/
 
   prometheus:
     build: ./prometheus
