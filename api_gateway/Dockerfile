@@ -9,8 +9,13 @@ COPY . .
 
 RUN go build -o main ./
 
+
+
 FROM scratch
+
 WORKDIR /root/
 COPY --from=build /app/main .
+
 EXPOSE 8083
+
 CMD ["./main"]
