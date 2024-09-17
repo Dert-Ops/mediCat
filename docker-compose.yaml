@@ -139,7 +139,9 @@ services:
     networks:
       - medicat_network
     ports:
-    - "8084:8080"
+      - "8084:8080"
+    volumes:
+      - ./logs/:/logs/
 
   auth_service:
     build: ./auth_service

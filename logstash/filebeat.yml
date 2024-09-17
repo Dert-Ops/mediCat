@@ -2,7 +2,7 @@ filebeat.inputs:
   - type: log
     enabled: true
     paths:
-      - /var/lib/docker/containers/*/*.log
+      - /logs/*.log
 
 output.logstash:
   hosts: ["logstash:5044"]
