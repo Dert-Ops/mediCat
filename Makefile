@@ -4,7 +4,7 @@ export $(shell sed 's/=.*//' .env)
 all:
 
 up:
-	docker compose up
+	docker compose up -d
 
 down:
 	docker compose down
