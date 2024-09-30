@@ -2,7 +2,7 @@ include .env
 export $(shell sed 's/=.*//' .env)
 
 all:
-
+	make up
 up:
 	docker compose up -d
 

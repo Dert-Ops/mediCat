@@ -6,9 +6,9 @@ Full stack microservice social media app project, like yor dreams...
 
 all volumes delete : docker volume rm $(docker volume ls -q)
 
-database quick connection : docker exec -it postgres-master psql -U admin -d medicat_db -p 5432
+database quick connection : docker exec -it postgres-master psql -U admin1 -d medicat_db -p 5432
 
-database quick connection2 : psql -h localhost -U admin -d medicat_db -p 5432
+database quick connection2 : psql -h localhost -U admin1 -d medicat_db -p 5432
 
 down, build and compose up single make command : make re 
 
