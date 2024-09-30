@@ -1,3 +1,25 @@
+DO $$
+BEGIN
+    IF NOT EXISTS (SELECT FROM pg_database WHERE datname = 'medicat_db') THEN
+        CREATE DATABASE medicat_db;
+    END IF;
+END
+$$;
+
+DO $$
+BEGIN
+    IF NOT EXISTS (SELECT FROM pg_user WHERE usename = 'admin1') THEN
+        CREATE USER admin1 WITH PASSWORD 'admin123';
+    END IF;
+END
+$$;
+
+
+GRANT ALL PRIVILEGES ON DATABASE medicat_db TO admin1;
+ALTER ROLE admin1 WITH SUPERUSER;
+ALTER ROLE admin1 WITH CREATEROLE;
+
+
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
