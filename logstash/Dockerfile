@@ -1,3 +1,5 @@
-FROM docker.elastic.co/logstash/logstash:7.10.1
+FROM logstash:8.9.1
 
-CMD ["logstash", "-f", "/usr/share/logstash/pipeline/logstash.conf"]
+EXPOSE 5044 9600
+
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint"]

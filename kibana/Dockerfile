@@ -1,3 +1,3 @@
-FROM docker.elastic.co/kibana/kibana:7.10.1
+FROM kibana:8.9.1
 
-CMD ["kibana"]
+EXPOSE 5601
