@@ -14,32 +14,6 @@ services:
     networks:
       - medicat_network
 
-#  postgres-slave:
-#    build: ./database_slave
-#    container_name: postgres-slave
-#    environment:
-#      POSTGRES_USER: ${POSTGRES_USER}
-#      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-#      POSTGRES_DB: ${POSTGRES_DB}
-#      REPLICATION_USER: ${REPLICATION_USER}
-#      REPLICATION_PASSWORD: ${REPLICATION_PASSWORD}
-#    depends_on:
-#      - postgres-master
-#    volumes:
-#      - pg_slave_data:/var/lib/postgresql/data
-#    networks:
-#      - medicat_network
-
-  redis:
-    build: ./redis
-    container_name: redis
-    ports:
-      - "${REDIS_PORT}:${REDIS_PORT}"
-    volumes:
-      - redis_data:/data
-    networks:
-      - medicat_network
-
   rabbitmq:
     build: ./rabbitmq
     container_name: rabbitmq
@@ -53,66 +27,7 @@ services:
       - rabbitmq_data:/var/lib/rabbitmq
     networks:
       - medicat_network
-
-  # elasticsearch:
-  #   build:
-  #     context: ./elasticsearch
-  #   volumes:
-  #     - es_data:/usr/share/elasticsearch/data
-  #   environment:
-  #     - discovery.type=single-node
-  #   ports:
-  #     - "9200:9200"
-  
-  # logstash:
-  #   build:
-  #     context: ./logstash
-  #   volumes:
-  #     - ./logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
-  #   ports:
-  #     - "5044:5044"
-  #     - "9600:9600"
-  #   depends_on:
-  #     - elasticsearch
-
-  # kibana:
-  #   build:
-  #     context: ./kibana
-  #   ports:
-  #     - "5601:5601"
-  #   depends_on:
-  #     - elasticsearch
-
-  # filebeat:
-  #   image: docker.elastic.co/beats/filebeat:6.5.1
-  #   depends_on:
-  #     - elasticsearch
-  #   volumes:
-  #       - ./logstash/filebeat.yml:/usr/share/filebeat/filebeat.yml
-  #       - ./logs/:/logs/
-
-  prometheus:
-    build: ./prometheus
-    container_name: prometheus
-    ports:
-      - "${PROMETHEUS_PORT}:${PROMETHEUS_PORT}"
-    volumes:
-      - prometheus_data:/prometheus
-    networks:
-      - medicat_network
-
-  grafana:
-    build: ./grafana
-    container_name: grafana
-    ports:
-      - "${GRAFANA_PORT}:${GRAFANA_PORT}"
-    volumes:
-      - grafana_data:/var/lib/grafana
-    networks:
-      - medicat_network
-    depends_on:
-      - prometheus
-  
+    
   api_gateway:
     build: ./api_gateway
     container_name: api_gateway
@@ -147,29 +62,9 @@ services:
     ports:
     - "8082:8080"
 
-  frontend:
-    build: ./frontend
-    container_name: frontend
-    networks:
-      - medicat_network
-    ports:
-    - "${HTTP_PORT}:${HTTP_PORT}"
-    - "${HTTPS_PORT}:${HTTPS_PORT}"
-    depends_on:
-    - auth_service
-    - user_service
-    - media_service
-    - redis
-#- postgres-slave
-
 volumes:
   pg_master_data:
-  pg_slave_data:
-  redis_data:
   rabbitmq_data:
-  es_data:
-  prometheus_data:
-  grafana_data:
 
 networks:
   medicat_network:
