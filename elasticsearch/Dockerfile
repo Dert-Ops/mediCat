@@ -1,3 +1,7 @@
-FROM docker.elastic.co/elasticsearch/elasticsearch:7.10.1
+FROM elasticsearch:8.9.1
 
-CMD ["elasticsearch"]
+ENV discovery.type=single-node
+
+EXPOSE 9200
+
+ENTRYPOINT ["/bin/tini", "--", "/usr/local/bin/docker-entrypoint.sh"]
