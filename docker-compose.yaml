@@ -54,42 +54,42 @@ services:
     networks:
       - medicat_network
 
-  elasticsearch:
-    build:
-      context: ./elasticsearch
-    volumes:
-      - es_data:/usr/share/elasticsearch/data
-    environment:
-      - discovery.type=single-node
-    ports:
-      - "9200:9200"
+  # elasticsearch:
+  #   build:
+  #     context: ./elasticsearch
+  #   volumes:
+  #     - es_data:/usr/share/elasticsearch/data
+  #   environment:
+  #     - discovery.type=single-node
+  #   ports:
+  #     - "9200:9200"
   
-  logstash:
-    build:
-      context: ./logstash
-    volumes:
-      - ./logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
-    ports:
-      - "5044:5044"
-      - "9600:9600"
-    depends_on:
-      - elasticsearch
+  # logstash:
+  #   build:
+  #     context: ./logstash
+  #   volumes:
+  #     - ./logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+  #   ports:
+  #     - "5044:5044"
+  #     - "9600:9600"
+  #   depends_on:
+  #     - elasticsearch
 
-  kibana:
-    build:
-      context: ./kibana
-    ports:
-      - "5601:5601"
-    depends_on:
-      - elasticsearch
+  # kibana:
+  #   build:
+  #     context: ./kibana
+  #   ports:
+  #     - "5601:5601"
+  #   depends_on:
+  #     - elasticsearch
 
-  filebeat:
-    image: docker.elastic.co/beats/filebeat:6.5.1
-    depends_on:
-      - elasticsearch
-    volumes:
-        - ./logstash/filebeat.yml:/usr/share/filebeat/filebeat.yml
-        - ./logs/:/logs/
+  # filebeat:
+  #   image: docker.elastic.co/beats/filebeat:6.5.1
+  #   depends_on:
+  #     - elasticsearch
+  #   volumes:
+  #       - ./logstash/filebeat.yml:/usr/share/filebeat/filebeat.yml
+  #       - ./logs/:/logs/
 
   prometheus:
     build: ./prometheus
