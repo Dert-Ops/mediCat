@@ -1,0 +1,71 @@
+services:
+  postgres-master:
+    build: ./database_master
+    container_name: postgres-master
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "${POSTGRES_PORT}:${POSTGRES_PORT}"
+    volumes:
+      - pg_master_data:/var/lib/postgresql/data
+      - ./database_master:/docker-entrypoint-initdb.d
+    networks:
+      - medicat_network
+
+  rabbitmq:
+    build: ./rabbitmq
+    container_name: rabbitmq
+    ports:
+      - "${RABBITMQ1_PORT}:${RABBITMQ1_PORT}"
+      - "${RABBITMQ2_PORT}:${RABBITMQ2_PORT}"
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - medicat_network
+    
+  api_gateway:
+    build: ./api_gateway
+    container_name: api_gateway
+    networks:
+      - medicat_network
+    ports:
+    - "8083:8080"
+  
+  media_service:
+    build: ./media_service
+    container_name: media_service
+    networks:
+      - medicat_network
+    ports:
+    - "8081:8080"
+  
+  user_service:
+    build: ./user_service
+    container_name: user_service
+    networks:
+      - medicat_network
+    ports:
+      - "8084:8080"
+    volumes:
+      - ./logs/:/logs/
+
+  auth_service:
+    build: ./auth_service
+    container_name: auth_service
+    networks:
+      - medicat_network
+    ports:
+    - "8082:8080"
+
+volumes:
+  pg_master_data:
+  rabbitmq_data:
+
+networks:
+  medicat_network:
+    driver: bridge
