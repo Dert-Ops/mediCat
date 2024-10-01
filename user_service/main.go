@@ -34,10 +34,10 @@ func createUser(c *fiber.Ctx) error {
 func main() {
 	app := fiber.New()
 
-	mainApp := app.Group("/api/user")
-	mainApp.Get("", getUser)
-	mainApp.Post("", createUser)
+	// mainApp := app.Group("/user")
+	app.Get("/get", getUser)
+	app.Post("/create", createUser)
 
-	app.Listen(":8000")
+	app.Listen(":8080")
 
 }
