@@ -1,0 +1,44 @@
+time="2024-10-02T02:07:52Z" level=info msg="Server is running on port 8080"
+{"level":"info","msg":"Server is running on port 8080","time":"2024-10-02 05:18:35"}
+{"level":"info","msg":"Bir Kullanıcı Giriş Yaptı","time":"2024-10-02 05:18:40"}
+{"level":"info","msg":"Server is running on port 8080","time":"2024-10-02 05:23:49"}
+{"level":"fatal","msg":"Failed Connect RABBİT MınaKoyim%!(EXTRA *net.OpError=dial tcp 172.18.0.2:5672: connect: connection refused)","time":"2024-10-02 06:52:44"}
+{"level":"debug","msg":"Database connection successful.","time":"2024-10-02 06:53:41"}
+{"level":"info","msg":"Server is running on port 8080","time":"2024-10-02 06:53:41"}
+{"level":"fatal","msg":"Failed Connect RABBİT MınaKoyim dial tcp 172.18.0.3:15672: connect: connection refused","time":"2024-10-02 06:58:22"}
+{"level":"fatal","msg":"Failed Connect RABBİT MınaKoyim Exception (501) Reason: \"EOF\"","time":"2024-10-02 06:58:53"}
+{"level":"fatal","msg":"Failed Connect RABBİT MınaKoyim Exception (501) Reason: \"EOF\"","time":"2024-10-02 06:59:36"}
+{"level":"fatal","msg":"Failed Connect RABBİT MınaKoyim dial tcp 172.18.0.2:15672: connect: connection refused","time":"2024-10-02 06:59:53"}
+{"level":"fatal","msg":"Failed Connect RABBİT MınaKoyim Exception (501) Reason: \"EOF\"","time":"2024-10-02 07:01:39"}
+{"level":"fatal","msg":"Failed Connect RABBİT MınaKoyim dial tcp 172.18.0.2:5672: connect: connection refused","time":"2024-10-02 07:03:49"}
+{"level":"fatal","msg":"Failed Connect RABBİT MınaKoyim dial tcp 172.18.0.2:5672: connect: connection refused","time":"2024-10-02 07:03:59"}
+{"level":"debug","msg":"Database connection successful.","time":"2024-10-02 07:06:53"}
+{"level":"info","msg":"Server is running on port 8080","time":"2024-10-02 07:06:53"}
+{"level":"trace","msg":"Kullanıcı oluşturuldu: {{1018 2024-10-02 09:16:13.620290556 +0000 UTC 2024-10-02 09:16:13.620290556 +0000 UTC {0001-01-01 00:00:00 +0000 UTC false}} Berkay asd@asd.com $2a$10$mXHzq5t7Y.6EZKeNd/iGI.9ZwJBuR9qnU2mjzwS05wfAEI75xhPku  sasd 0  false      }","time":"2024-10-02 12:16:13"}
+{"level":"debug","msg":"Database connection successful.","time":"2024-10-02 12:19:46"}
+{"level":"info","msg":"Server is running on port 8080","time":"2024-10-02 12:19:46"}
+{"level":"trace","msg":"Bir Kullanıcı Giriş Yaptı","time":"2024-10-02 12:19:59"}
+{"level":"debug","msg":"Database connection successful.","time":"2024-10-02 12:48:08"}
+{"level":"info","msg":"Server is running on port 8080","time":"2024-10-02 12:48:08"}
+{"level":"debug","msg":"Database connection successful.","time":"2024-10-02 14:03:25"}
+{"level":"info","msg":"Server is running on port 8080","time":"2024-10-02 14:03:25"}
+{"level":"debug","msg":"Database connection successful.","time":"2024-10-02 14:04:08"}
+{"level":"info","msg":"Server is running on port 8080","time":"2024-10-02 14:04:08"}
+{"level":"trace","msg":"Bir Kullanıcı Giriş Yaptı","time":"2024-10-02 14:11:43"}
+{"level":"debug","msg":"Database connection successful.","time":"2024-10-02 14:17:28"}
+{"level":"info","msg":"Server is running on port 8080","time":"2024-10-02 14:17:28"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-02 14:24:30"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-02 14:24:30"}
+{"level":"info","msg":"User Service is running on port 8081","time":"2024-10-02 14:24:30"}
+{"level":"debug","msg":"Database connection successful.","time":"2024-10-02 14:24:30"}
+{"level":"info","msg":"Server is running on port 8080","time":"2024-10-02 14:24:30"}
+{"level":"trace","msg":"Kullanıcı oluşturuldu: {{1020 2024-10-02 11:25:45.865034088 +0000 UTC 2024-10-02 11:25:45.865034088 +0000 UTC {0001-01-01 00:00:00 +0000 UTC false}} salak asdasd@asd.com $2a$10$k8tAPJrGEEaw93tcIfsg0envMDAVP4RtnJiBofcoPSGev3K2hiurm  sasd 0  false      }","time":"2024-10-02 14:25:45"}
+{"level":"trace","msg":"Bir Kullanıcı Giriş Yaptı","time":"2024-10-02 14:26:49"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-02 14:29:47"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-02 14:29:47"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-02 14:29:47"}
+{"level":"trace","msg":"Kullanıcı oluşturuldu: {{1021 2024-10-02 11:30:23.773851973 +0000 UTC 2024-10-02 11:30:23.773851973 +0000 UTC {0001-01-01 00:00:00 +0000 UTC false}} alp alp@asd.com $2a$10$eSfN8nFJmKVWaY04PmaPRurR7SFLvTHZ8S11sK6zsxFdz9gfJ57/q  sasd 0  false      }","time":"2024-10-02 14:30:23"}
+{"level":"trace","msg":"Bir Kullanıcı Giriş Yaptı","time":"2024-10-02 14:30:57"}
+{"level":"warning","msg":"Şifre doğrulama hatası: girilen şifre Alp!123 - veritabanındaki hashlenmiş şifre $2a$10$QX02vgiVvHvGcCI5Xht7hOqZf.OMWDiVrcLQ2ZAZ/gGmmcTIuYcMm","time":"2024-10-02 14:32:39"}
+{"level":"warning","msg":"Şifre doğrulama hatası: girilen şifre Alp!1234 - veritabanındaki hashlenmiş şifre $2a$10$QX02vgiVvHvGcCI5Xht7hOqZf.OMWDiVrcLQ2ZAZ/gGmmcTIuYcMm","time":"2024-10-02 14:32:45"}
+{"level":"trace","msg":"Bir Kullanıcı Giriş Yaptı","time":"2024-10-02 14:33:05"}
