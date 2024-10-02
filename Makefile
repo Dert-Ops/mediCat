@@ -1,6 +1,3 @@
-include .env
-export $(shell sed 's/=.*//' .env)
-
 all:
 	make up
 
