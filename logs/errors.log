@@ -42,3 +42,9 @@ time="2024-10-02T02:07:52Z" level=info msg="Server is running on port 8080"
 {"level":"warning","msg":"Şifre doğrulama hatası: girilen şifre Alp!123 - veritabanındaki hashlenmiş şifre $2a$10$QX02vgiVvHvGcCI5Xht7hOqZf.OMWDiVrcLQ2ZAZ/gGmmcTIuYcMm","time":"2024-10-02 14:32:39"}
 {"level":"warning","msg":"Şifre doğrulama hatası: girilen şifre Alp!1234 - veritabanındaki hashlenmiş şifre $2a$10$QX02vgiVvHvGcCI5Xht7hOqZf.OMWDiVrcLQ2ZAZ/gGmmcTIuYcMm","time":"2024-10-02 14:32:45"}
 {"level":"trace","msg":"Bir Kullanıcı Giriş Yaptı","time":"2024-10-02 14:33:05"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-02 16:03:32"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-02 16:03:32"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-02 16:03:32"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-02 16:29:24"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-02 16:29:24"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-02 16:29:24"}

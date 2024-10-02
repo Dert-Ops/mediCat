@@ -1,4 +1,4 @@
-FROM golang:1.21.1-alpine AS build
+FROM golang:1.23.2-alpine AS build
 
 WORKDIR /app
 
@@ -8,7 +8,6 @@ RUN go mod download
 COPY . .
 
 RUN go build -o main ./cmd/apiGateway/main.go
-
 
 
 FROM scratch

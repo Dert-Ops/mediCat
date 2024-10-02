@@ -1,6 +1,6 @@
 module gitlab.com/dert-ops/mediCat/mediCat-Dev.git
 
-go 1.21.1
+go 1.23.2
 
 require (
 	github.com/gin-contrib/cors v1.7.2

@@ -1,10 +1,10 @@
 package main
 
 import (
+	"fmt"
 	"io"
 	"log"
 	"net/http"
-	"os"
 	"strings"
 
 	"github.com/gin-contrib/cors"
@@ -13,10 +13,10 @@ import (
 )
 
 var serviceMap = map[string]string{
-	"user":  "http://user_service:8080",
+	"users":         "http://user_service:8080",
 	"media-service": "http://media-service-container:8081",
-	"auth-service":  "http://auth-service-container:8082",
-	"post-service":  "http://post-service-container:8083",
+	"auth":          "http://auth_service:8080",
+	"post-service":  "http://post-service-container:8080",
 }
 
 func proxyHandler(c *gin.Context) {
@@ -37,8 +37,27 @@ func proxyHandler(c *gin.Context) {
 		proxyURL += "?" + c.Request.URL.RawQuery
 	}
 
+	req, err := http.NewRequest(c.Request.Method, proxyURL, c.Request.Body)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Yeni istek oluşturulamadı"})
+		return
+	}
+
+	// Orijinal isteğin header'larını yeni isteğe kopyala
+	for key, values := range c.Request.Header {
+		for _, value := range values {
+			req.Header.Add(key, value)
+		}
+	}
+
+	if token := c.Request.Header.Get("Authorization"); token != "" {
+		req.Header.Set("Authorization", token)
+	}
+
 	// İsteği ilgili servise yönlendir
-	resp, err := http.Get(proxyURL)
+	fmt.Print(req)
+	client := &http.Client{}
+	resp, err := client.Do(req)
 	if err != nil {
 		c.JSON(http.StatusBadGateway, gin.H{"error": serviceName + " servisine bağlanılamadı"})
 		return
@@ -47,37 +66,39 @@ func proxyHandler(c *gin.Context) {
 
 	// Yanıtı geri döndür
 	c.Status(resp.StatusCode)
+	for key, values := range resp.Header {
+		for _, value := range values {
+			c.Writer.Header().Add(key, value)
+		}
+	}
 	io.Copy(c.Writer, resp.Body)
 }
 
 func main() {
-    // Load environment variables from .env file if it exists
-    err := godotenv.Load(".env")
-    if err != nil {
-        log.Println("No .env file found, continuing without loading environment variables from file.")
-    }
+	// Load environment variables from .env file if it exists
+	err := godotenv.Load(".env")
+	if err != nil {
+		log.Println("No .env file found, continuing without loading environment variables from file.")
+	}
 
-    // Set up Gin router with CORS
-    router := gin.Default()
-    router.Use(cors.New(cors.Config{
-        AllowOrigins:     []string{"*"},
-        AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
-        AllowHeaders:     []string{"Origin", "Authorization", "Content-Type"},
-        ExposeHeaders:    []string{"Content-Length"},
-        AllowCredentials: true,
-    }))
+	// Set up Gin router with CORS
+	router := gin.Default()
+	router.Use(cors.New(cors.Config{
+		AllowOrigins:     []string{"*"},
+		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		AllowHeaders:     []string{"Origin", "Authorization", "Content-Type"},
+		ExposeHeaders:    []string{"Content-Length"},
+		AllowCredentials: true,
+	}))
 
-    // Example route
-    router.GET("/health", func(c *gin.Context) {
-        c.JSON(http.StatusOK, gin.H{"status": "API Gateway is up and running"})
-    })
+	// Example route
+	router.GET("/health", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{"status": "API Gateway is up and running"})
+	})
 
 	router.Any("/:service/*any", proxyHandler)
 
-    // Start the server
-    port := os.Getenv("PORT")
-    if port == "" {
-        port = "8080"
-    }
-    router.Run(":" + port)
+	// Start the server
+	port := "8080"
+	router.Run(":" + port)
 }
