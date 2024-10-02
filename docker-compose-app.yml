@@ -1,0 +1,38 @@
+services:
+  api_gateway:
+    build: ./api_gateway
+    container_name: api_gateway
+    networks:
+      - medicat_network
+    ports:
+    - "${API_GATEWAY_PORT}:${DEFAULT_GO_PORT}"
+  
+  media_service:
+    build: ./media_service
+    container_name: media_service
+    networks:
+      - medicat_network
+    ports:
+    - "${MEDIA_SERVICE_PORT}:${DEFAULT_GO_PORT}"
+  
+  user_service:
+    build: ./user_service
+    container_name: user_service
+    networks:
+      - medicat_network
+    ports:
+      - "${USER_SERVICE_PORT}:${DEFAULT_GO_PORT}"
+    volumes:
+      - ./logs/:/logs/
+
+  auth_service:
+    build: ./auth_service
+    container_name: auth_service
+    networks:
+      - medicat_network
+    ports:
+    - "${AUTH_SERVICE_PORT}:${DEFAULT_GO_PORT}"
+
+networks:
+  medicat_network:
+    external: true
