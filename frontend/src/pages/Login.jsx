@@ -1,26 +1,28 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-	const [formData, setFormData] = useState({
-		username: '',
+    const [formData, setFormData] = useState({
+        username: '',
 		email: '',
 		password: '',
 		fullname: '', // Fullname added for registration
 	});
 	const [isLogin, setIsLogin] = useState(true);
-
+    const navigate = useNavigate();
+    
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setFormData({ ...formData, [name]: value });
 	};
-
+    
 	// Handle login submit (GET request)
 	const handleLoginSubmit = async (e) => {
-		e.preventDefault();
-
+        e.preventDefault();
+        
 		// GET request for login
 		const endpoint = `http://45.9.30.65:8083/auth/signin?username=${encodeURIComponent(formData.username)}&password=${encodeURIComponent(formData.password)}`;
-
+        
 		try {
 			const response = await fetch(endpoint, {
 				method: 'GET',
@@ -32,20 +34,23 @@ const Login = () => {
 			if (response.ok) {
 				console.log('Login işlemi başarılı');
 
-				// Kullanıcı profil bilgilerini çekme
-				const userData = await fetch(`http://45.9.30.65:8083/users/${formData.username}`, {
-					method: 'GET',
-					headers: {
-						'Authorization': `Bearer ${response.token}`, // Example token authorization
-					},
-				});
 
-				if (userData.ok) {
-					const userProfile = await userData.json();
-					console.log('Kullanıcı Bilgileri:', userProfile);
-				} else {
-					console.error('Kullanıcı bilgileri alınamadı:', userData.status);
-				}
+                navigate('/home');
+
+				// Kullanıcı profil bilgilerini çekme
+				// const userData = await fetch(`http://45.9.30.65:8083/users/${formData.username}`, {
+				// 	method: 'GET',
+				// 	headers: {
+				// 		'Authorization': `Bearer ${response.token}`, // Example token authorization
+				// 	},
+				// });
+
+				// if (userData.ok) {
+				// 	const userProfile = await userData.json();
+				// 	console.log('Kullanıcı Bilgileri:', userProfile);
+				// } else {
+				// 	console.error('Kullanıcı bilgileri alınamadı:', userData.status);
+				// }
 			} else {
 				console.error('Login işlemi başarısız:', response.status);
 			}
