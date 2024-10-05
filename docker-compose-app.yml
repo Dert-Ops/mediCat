@@ -1,11 +1,20 @@
 services:
+  frontend:
+    build: ./frontend
+    container_name: frontend_service
+    networks:
+      - medicat_network
+    ports:
+      - "80:80"
+      - "443:443"
+
   api_gateway:
     build: ./api_gateway
     container_name: api_gateway
     networks:
       - medicat_network
     ports:
-    - "${API_GATEWAY_PORT}:${DEFAULT_GO_PORT}"
+      - "${API_GATEWAY_PORT}:${DEFAULT_GO_PORT}"
   
   media_service:
     build: ./media_service
@@ -13,7 +22,7 @@ services:
     networks:
       - medicat_network
     ports:
-    - "${MEDIA_SERVICE_PORT}:${DEFAULT_GO_PORT}"
+      - "${MEDIA_SERVICE_PORT}:${DEFAULT_GO_PORT}"
   
   user_service:
     build: ./user_service
