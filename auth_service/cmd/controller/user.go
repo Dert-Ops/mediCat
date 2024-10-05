@@ -44,32 +44,44 @@ func SignUp(c *gin.Context) {
 
 func SignIn(c *gin.Context) {
 	var loginData struct {
-		Username string `json:"username"`
-		Password string `json:"password"`
+		Username string `json:"username" binding:"required"`
+		Password string `json:"password" binding:"required"`
 	}
 
-	// Giriş bilgilerini kontrol et
-	if err := c.ShouldBindJSON(&loginData); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Geçersiz giriş bilgileri"})
-		return
+	var username, password string // username ve password değişkenlerini burada tanımlıyoruz
+
+	// Önce JSON verisini kontrol et
+	if err := c.ShouldBindJSON(&loginData); err == nil {
+		// JSON verisi varsa, username ve password'u buradan al
+		username = loginData.Username
+		password = loginData.Password
+	} else {
+		// JSON verisi yoksa, URL'den veri al
+		username = c.Query("username")
+		password = c.Query("password")
+
+		if username == "" || password == "" {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Geçersiz giriş bilgileri"})
+			return
+		}
 	}
 
 	var user models.User
 	// Kullanıcıyı veritabanında ara
-	if err := config.DB.Where("username = ?", loginData.Username).First(&user).Error; err != nil {
+	if err := config.DB.Where("username = ?", username).First(&user).Error; err != nil {
 		c.JSON(http.StatusUnauthorized, gin.H{"error": "Kullanıcı bulunamadı"})
 		return
 	}
 
 	// Şifreyi doğrula
-	if err := bcrypt.CompareHashAndPassword([]byte(user.PasswordHash), []byte(loginData.Password)); err != nil {
-		config.LogrusLogger.Warnf("Şifre doğrulama hatası: girilen şifre %s - veritabanındaki hashlenmiş şifre %s", loginData.Password, user.PasswordHash)
+	if err := bcrypt.CompareHashAndPassword([]byte(user.PasswordHash), []byte(password)); err != nil {
+		config.LogrusLogger.Warnf("Şifre doğrulama hatası: girilen şifre %s - veritabanındaki hashlenmiş şifre %s", password, user.PasswordHash)
 		c.JSON(http.StatusUnauthorized, gin.H{"error": "Geçersiz şifre"})
 		return
 	}
 
 	// JWT token oluştur
-	token, err := jwt.GenerateJWT(user.Username) // Yeni modülden çağırıyoruz
+	token, err := jwt.GenerateJWT(user.Username)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Token oluşturulamadı"})
 		return
@@ -79,7 +91,7 @@ func SignIn(c *gin.Context) {
 		Name:     "token",
 		Value:    token,
 		HttpOnly: true,
-		Secure:   true,
+		Secure:   true, // Sadece HTTPS üzerinden iletilsin
 		Path:     "/",
 		Expires:  time.Now().Add(24 * time.Hour),
 	})
