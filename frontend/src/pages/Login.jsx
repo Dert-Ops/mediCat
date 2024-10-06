@@ -15,6 +15,17 @@ const Login = () => {
 		const { name, value } = e.target;
 		setFormData({ ...formData, [name]: value });
 	};
+
+    function getCookie(name) {
+        let cookieArr = document.cookie.split(";");
+        for (let i = 0; i < cookieArr.length; i++) {
+            let cookiePair = cookieArr[i].split("=");
+            if (name == cookiePair[0].trim()) {
+                return decodeURIComponent(cookiePair[1]);
+            }
+        }
+        return null;
+    }
     
 	// Handle login submit (GET request)
 	const handleLoginSubmit = async (e) => {
@@ -37,20 +48,25 @@ const Login = () => {
 
                 navigate('/home');
 
-				// Kullanıcı profil bilgilerini çekme
-				// const userData = await fetch(`http://45.9.30.65:8083/users/${formData.username}`, {
-				// 	method: 'GET',
-				// 	headers: {
-				// 		'Authorization': `Bearer ${response.token}`, // Example token authorization
-				// 	},
-				// });
+                
+                // Fetch API ile token'ı header'a ekleyerek GetUser isteği gönderiyoruz
+                
+                const token = getCookie("token");
 
-				// if (userData.ok) {
-				// 	const userProfile = await userData.json();
-				// 	console.log('Kullanıcı Bilgileri:', userProfile);
-				// } else {
-				// 	console.error('Kullanıcı bilgileri alınamadı:', userData.status);
-				// }
+				const userData = await fetch(`http://45.9.30.65:8083/users/${formData.username}`, {
+					method: 'GET',
+					headers: {
+						'Authorization': `Bearer ${token}`, // Example token authorization
+                        'Content-Type': 'application/json',
+					},
+				});
+
+				if (userData.ok) {
+					const userProfile = await userData.json();
+					console.log('Kullanıcı Bilgileri:', userProfile);
+				} else {
+					console.error('Kullanıcı bilgileri alınamadı:', userData.status);
+				}
 			} else {
 				console.error('Login işlemi başarısız:', response.status);
 			}
