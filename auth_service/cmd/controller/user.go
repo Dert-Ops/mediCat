@@ -90,8 +90,8 @@ func SignIn(c *gin.Context) {
 	http.SetCookie(c.Writer, &http.Cookie{
 		Name:     "token",
 		Value:    token,
-		HttpOnly: true,
-		Secure:   true, // Sadece HTTPS üzerinden iletilsin
+		// HttpOnly: true,
+		// Secure:   true, // Sadece HTTPS üzerinden iletilsin
 		Path:     "/",
 		Expires:  time.Now().Add(24 * time.Hour),
 	})
@@ -113,6 +113,45 @@ func GetUser(c *gin.Context) {
 
 	c.JSON(http.StatusOK, user)
 }
+
+// ------------- [!!!!!!!!]     getuser token validation ypailcak
+// ------------- [!!!!!!!!]     jwt token generate kontrol edilcek
+// ------------- [!!!!!!!!]     
+
+// func GetUser(c *gin.Context) {
+//     // Çerezden token'ı al
+//     tokenCookie, err := c.Request.Cookie("token")
+//     if err != nil {
+//         c.JSON(http.StatusUnauthorized, gin.H{"error": "Token bulunamadı"})
+//         return
+//     }
+
+//     tokenString := tokenCookie.Value
+
+//     // Token'ı doğrula
+//     token, err := jwt.ValidateToken(tokenString)
+//     if err != nil {
+//         c.JSON(http.StatusUnauthorized, gin.H{"error": "Geçersiz token"})
+//         return
+//     }
+
+//     // Token geçerli mi?
+//     if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
+//         username := claims["username"].(string) // Token'dan username'i al
+
+//         var user models.User
+//         // Veritabanında kullanıcıyı ara
+//         if err := config.DB.Where("username = ?", username).First(&user).Error; err != nil {
+//             c.JSON(http.StatusNotFound, gin.H{"error": "Kullanıcı bulunamadı"})
+//             return
+//         }
+
+//         // Başarılı durumda kullanıcıyı döndür
+//         c.JSON(http.StatusOK, user)
+//     } else {
+//         c.JSON(http.StatusUnauthorized, gin.H{"error": "Token doğrulaması başarısız"})
+//     }
+// }
 
 func UpdateUser(c *gin.Context) {
 	var updatedUser struct {
