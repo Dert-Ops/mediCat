@@ -10,6 +10,7 @@ import (
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
+	"gitlab.com/dert-ops/mediCat/mediCat-Dev.git/cmd/middleware"
 )
 
 var serviceMap = map[string]string{
@@ -96,7 +97,14 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{"status": "API Gateway is up and running"})
 	})
 
-	router.Any("/:service/*any", proxyHandler)
+	router.POST("/auth/signup", proxyHandler)
+	router.GET("/auth/signin", proxyHandler)
+
+	JWTProtected := router.Group("/")
+	JWTProtected.Use(middleware.AuthMiddleware())
+	{
+		JWTProtected.Any("/:service/*any", proxyHandler)
+	}
 
 	// Start the server
 	port := "8080"
