@@ -2,68 +2,74 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-    const [formData, setFormData] = useState({
-        username: '',
+	const [formData, setFormData] = useState({
+		username: '',
 		email: '',
 		password: '',
 		fullname: '', // Fullname added for registration
 	});
 	const [isLogin, setIsLogin] = useState(true);
-    const navigate = useNavigate();
-    
+	const navigate = useNavigate();
+
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setFormData({ ...formData, [name]: value });
 	};
 
-    function getCookie(name) {
-        let cookieArr = document.cookie.split(";");
-        for (let i = 0; i < cookieArr.length; i++) {
-            let cookiePair = cookieArr[i].split("=");
-            if (name == cookiePair[0].trim()) {
-                return decodeURIComponent(cookiePair[1]);
-            }
-        }
-        return null;
-    }
-    
-	// Handle login submit (GET request)
+	function getCookie(name) {
+		let cookieArr = document.cookie.split(";");
+		for (let i = 0; i < cookieArr.length; i++) {
+			let cookiePair = cookieArr[i].split("=");
+			if (name === cookiePair[0].trim()) {
+				return decodeURIComponent(cookiePair[1]);
+			}
+		}
+		return null; // Eğer cookie bulunamazsa null döner
+	}
+
 	const handleLoginSubmit = async (e) => {
-        e.preventDefault();
-        
-		// GET request for login
-		const endpoint = `http://45.9.30.65:8083/auth/signin?username=${encodeURIComponent(formData.username)}&password=${encodeURIComponent(formData.password)}`;
-        
+		e.preventDefault();
+
+		const endpoint = 'http://45.9.30.65:8083/auth/signin';
+
+		const requestData = {
+			username: formData.username,
+			password: formData.password,
+		};
+
 		try {
 			const response = await fetch(endpoint, {
-				method: 'GET',
+				method: 'POST', // POST isteği
 				headers: {
 					'Content-Type': 'application/json',
 				},
+				body: JSON.stringify(requestData), // Kullanıcı adı ve şifreyi JSON formatında gönderiyoruz
 			});
 
 			if (response.ok) {
 				console.log('Login işlemi başarılı');
 
+				// Token'ı alıyoruz
+				const { token } = await response.json(); // API'den token'ı alın
+				document.cookie = `token=${token}; path=/`; // Cookie'yi ayarlayın
 
-                navigate('/home');
+				// if (!token) {
+				// 	return
+				// }
 
-                
-                // Fetch API ile token'ı header'a ekleyerek GetUser isteği gönderiyoruz
-                
-                const token = getCookie("token");
-
+				// Başarılı girişten sonra yönlendirme
 				const userData = await fetch(`http://45.9.30.65:8083/users/${formData.username}`, {
 					method: 'GET',
 					headers: {
-						'Authorization': `Bearer ${token}`, // Example token authorization
-                        'Content-Type': 'application/json',
+						'Authorization': `Bearer ${token}`,
+						'Content-Type': 'application/json',
 					},
 				});
 
 				if (userData.ok) {
 					const userProfile = await userData.json();
-					console.log('Kullanıcı Bilgileri:', userProfile);
+					// Kullanıcı bilgilerini yönlendirdiğimiz User sayfasına geçirelim
+					navigate('/user', { state: { user: userProfile } });
 				} else {
 					console.error('Kullanıcı bilgileri alınamadı:', userData.status);
 				}
@@ -75,6 +81,7 @@ const Login = () => {
 		}
 	};
 
+
 	// Handle signup submit (POST request)
 	const handleSignupSubmit = async (e) => {
 		e.preventDefault();
@@ -84,6 +91,7 @@ const Login = () => {
 
 		try {
 			const response = await fetch(endpoint, {
+				mode: 'cors',
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -92,14 +100,16 @@ const Login = () => {
 					username: formData.username,
 					email: formData.email,
 					password: formData.password,
-					fullname: formData.fullname, // fullname added in signup request
+					fullname: formData.fullname,
 				}),
 			});
 
 			if (response.ok) {
-				console.log('Register işlemi başarılı');
+				const data = await response.json(); // JSON yanıtı al
+				console.log('Register işlemi başarılı:', data);
 			} else {
-				console.error('Register işlemi başarısız:', response.status);
+				const errorText = await response.text(); // Hata metnini al
+				console.error('Register işlemi başarısız:', response.status, errorText);
 			}
 		} catch (error) {
 			console.error('Bir hata oluştu:', error);
