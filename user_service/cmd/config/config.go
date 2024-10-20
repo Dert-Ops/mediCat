@@ -12,7 +12,7 @@ var SecretKey string
 var LogrusLogger *logrus.Logger
 
 func LoadEnv() {
-	err := godotenv.Load()
+	err := godotenv.Load(".env")
 	if err != nil {
 		LogrusLogger.Warnf("Error loading .env file")
 	}

@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"os"
 
 	"github.com/gin-gonic/gin"
 )
@@ -50,7 +49,8 @@ func UpdateUserProfile(c *gin.Context) {
 	}
 
 	req.Header.Set("Content-Type", "application/json")
-	req.Header.Set("User-Service-Authorization", os.Getenv("USER_SERVICE_API_KEY"))
+	req.Header.Set("User-Service-Authorization", "USER_SERVICE_API_KEY") //os.Getenv("USER_SERVICE_API_KEY")
+
 	// Kullanıcı token'ını ekleyin
 	token := c.Request.Header.Get("Authorization")
 	if token != "" {
@@ -98,7 +98,7 @@ func ResetUserPassword(c *gin.Context) {
 	}
 
 	req.Header.Set("Content-Type", "application/json")
-	req.Header.Set("User-Service-Authorization", os.Getenv("USER_SERVICE_API_KEY"))
+	req.Header.Set("User-Service-Authorization", "USER_SERVICE_API_KEY")
 	// Kullanıcı token'ını ekleyin
 	token := c.Request.Header.Get("Authorization")
 	if token != "" {
@@ -135,8 +135,8 @@ func DeleteUserProfile(c *gin.Context) {
 	}
 
 	req.Header.Set("Content-Type", "application/json")
-	req.Header.Set("User-Service-Authorization", os.Getenv("USER_SERVICE_API_KEY"))
-	
+	req.Header.Set("User-Service-Authorization", "USER_SERVICE_API_KEY")
+
 	// Kullanıcı token'ını ekleyin
 	token := c.Request.Header.Get("Authorization")
 	if token != "" {
@@ -169,7 +169,7 @@ func GetUserFromAuthService(id string) (interface{}, error) {
 	}
 
 	// Header'a User Service API Key'i ekle
-	req.Header.Set("User-Service-Authorization", os.Getenv("USER_SERVICE_API_KEY"))
+	req.Header.Set("User-Service-Authorization", "USER_SERVICE_API_KEY")
 
 	// HTTP client kullanarak isteği gönder
 	client := &http.Client{}
