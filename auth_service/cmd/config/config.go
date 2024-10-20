@@ -1,6 +1,7 @@
 package config
 
 import (
+	"log"
 	"os"
 	"time"
 
@@ -8,16 +9,18 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-var SecretKey string
 var LogrusLogger *logrus.Logger
+var SecretKey string
 
 func LoadEnv() {
-	err := godotenv.Load()
+	err := godotenv.Load(".env")
 	if err != nil {
-		LogrusLogger.Warnf("Error loading .env file")
+		log.Println("Error loading .env file")
 	}
-
 	SecretKey = os.Getenv("JWT_SECRET_KEY")
+	if SecretKey == "" {
+		log.Println("Error getting JWT_SECRET_KEY")
+	}
 }
 
 type GMT3JSONFormatter struct {

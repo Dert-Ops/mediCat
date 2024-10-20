@@ -1,13 +1,16 @@
 package controller
 
 import (
+	"log"
 	"net/http"
+	"strings"
 	"time"
 
+	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 	"gitlab.com/dert-ops/mediCat/mediCat-Dev.git/cmd/config"
 	"gitlab.com/dert-ops/mediCat/mediCat-Dev.git/cmd/models"
-	"gitlab.com/dert-ops/mediCat/mediCat-Dev.git/internal/jwt"
+	"gitlab.com/dert-ops/mediCat/mediCat-Dev.git/internal/ownJwt"
 	"gitlab.com/dert-ops/mediCat/mediCat-Dev.git/internal/validation"
 	"golang.org/x/crypto/bcrypt"
 )
@@ -81,19 +84,19 @@ func SignIn(c *gin.Context) {
 	}
 
 	// JWT token oluştur
-	token, err := jwt.GenerateJWT(user.Username)
+	token, err := ownJwt.GenerateJWT(user.Username)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Token oluşturulamadı"})
 		return
 	}
 
 	http.SetCookie(c.Writer, &http.Cookie{
-		Name:     "token",
-		Value:    token,
+		Name:  "token",
+		Value: token,
 		// HttpOnly: true,
 		// Secure:   true, // Sadece HTTPS üzerinden iletilsin
-		Path:     "/",
-		Expires:  time.Now().Add(24 * time.Hour),
+		Path:    "/",
+		Expires: time.Now().Add(24 * time.Hour),
 	})
 
 	// Başarıyla giriş yaptı
@@ -114,45 +117,6 @@ func GetUser(c *gin.Context) {
 	c.JSON(http.StatusOK, user)
 }
 
-// ------------- [!!!!!!!!]     getuser token validation ypailcak
-// ------------- [!!!!!!!!]     jwt token generate kontrol edilcek
-// ------------- [!!!!!!!!]     
-
-// func GetUser(c *gin.Context) {
-//     // Çerezden token'ı al
-//     tokenCookie, err := c.Request.Cookie("token")
-//     if err != nil {
-//         c.JSON(http.StatusUnauthorized, gin.H{"error": "Token bulunamadı"})
-//         return
-//     }
-
-//     tokenString := tokenCookie.Value
-
-//     // Token'ı doğrula
-//     token, err := jwt.ValidateToken(tokenString)
-//     if err != nil {
-//         c.JSON(http.StatusUnauthorized, gin.H{"error": "Geçersiz token"})
-//         return
-//     }
-
-//     // Token geçerli mi?
-//     if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
-//         username := claims["username"].(string) // Token'dan username'i al
-
-//         var user models.User
-//         // Veritabanında kullanıcıyı ara
-//         if err := config.DB.Where("username = ?", username).First(&user).Error; err != nil {
-//             c.JSON(http.StatusNotFound, gin.H{"error": "Kullanıcı bulunamadı"})
-//             return
-//         }
-
-//         // Başarılı durumda kullanıcıyı döndür
-//         c.JSON(http.StatusOK, user)
-//     } else {
-//         c.JSON(http.StatusUnauthorized, gin.H{"error": "Token doğrulaması başarısız"})
-//     }
-// }
-
 func UpdateUser(c *gin.Context) {
 	var updatedUser struct {
 		ProfilePicture  string `json:"profile_picture"`
@@ -167,7 +131,43 @@ func UpdateUser(c *gin.Context) {
 		Location        string `json:"location"`
 	}
 
-	username := c.Param("id")
+	//
+	tokenString := c.GetHeader("Authorization")
+	if tokenString == "" {
+		c.JSON(http.StatusUnauthorized, "Authorization header missing")
+		c.Abort()
+		return
+	}
+
+	bearerToken := strings.TrimPrefix(tokenString, "Bearer ")
+
+	if bearerToken == tokenString { // Eğer değişmedi ise, Bearer kelimesi yoktur
+		c.JSON(http.StatusUnauthorized, "Invalid token format")
+		c.Abort()
+		return
+	}
+
+	token, err := jwt.Parse(bearerToken, func(token *jwt.Token) (interface{}, error) {
+		return []byte("selamdostumyagmurvarmiorda"), nil
+	})
+	log.Println(err)
+	if err != nil || !token.Valid {
+		c.JSON(http.StatusUnauthorized, "Invalid token")
+		c.Abort()
+		return
+	}
+
+	var userId string
+
+	if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
+		// Token payload'ından id'yi al ve context'e ekle
+		userId = claims["user_id"].(string) // veya claims["id"].(float64) -> int'e çevirmeniz gerekebilir
+	} else {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "Yetkisiz"})
+		c.Abort()
+		return
+	}
+	//
 
 	// Kullanıcı güncelleme verisini al
 	if err := c.ShouldBindJSON(&updatedUser); err != nil {
@@ -177,8 +177,8 @@ func UpdateUser(c *gin.Context) {
 
 	// Veritabanında kullanıcıyı bul
 	var user models.User
-	if err := config.DB.Where("username = ?", username).First(&user).Error; err != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": "Kullanıcı bulunamadı"})
+	if err := config.DB.Where("username = ?", userId).First(&user).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Kullanıcı bulunamadı aaaa"})
 		return
 	}
 
@@ -221,7 +221,7 @@ func UpdateUser(c *gin.Context) {
 
 	// Kullanıcıyı kaydet
 	if err := config.DB.Save(&user).Error; err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Kullanıcı güncellenemedi"})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Kullanıcı güncellenemedi sa"})
 		return
 	}
 

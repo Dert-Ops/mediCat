@@ -1,30 +1,42 @@
 package main
 
 import (
+	"log"
 	"os"
 
 	"github.com/gin-gonic/gin"
-	"github.com/joho/godotenv"
 	"gitlab.com/dert-ops/mediCat/mediCat-Dev.git/cmd/config"
 	"gitlab.com/dert-ops/mediCat/mediCat-Dev.git/cmd/routes"
 )
 
-func main() {
-	err := godotenv.Load()
-	if err != nil {
-		config.InitLogrusLogger()
-		config.LogrusLogger.Warn("No .env file found, continuing without loading environment variables.")
+func logOriginMiddleware(c *gin.Context) {
+	origin := c.Request.Header.Get("Origin")
+	log.Printf("Request from Origin: %s", origin)
+	c.Next()
+
+	// Yanıt başlıklarını kontrol et
+	for name, values := range c.Writer.Header() {
+		if name == "Access-Control-Allow-Origin" {
+			log.Printf("Access-Control-Allow-Origin: %v", values)
+		}
 	}
+}
+
+func main() {
+
 	config.LoadEnv()
 
+	// Logrus logger'ı başlat
 	config.InitLogrusLogger()
-	// rabbitmq.InitRabbitMQ()
-	// rabbitmq.CreateQueue("email_queue")
+
 	// Veritabanına bağlan
 	config.ConnectDB()
 
 	// Gin router'ı oluştur
 	router := gin.Default()
+
+	// CORS ayarları
+	router.Use(logOriginMiddleware)
 
 	// Kullanıcı rotalarını ekle
 	routes.UserRoutes(router)

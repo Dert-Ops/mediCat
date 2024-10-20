@@ -11,23 +11,23 @@ func UserRoutes(router *gin.Engine) {
 	router.POST("/signup", controller.SignUp)
 
 	// Kullanıcı girişi
-	router.GET("/signin", controller.SignIn)
+	router.POST("/signin", controller.SignIn)
 
 	prodected := router.Group("/", middleware.UserServiceAuthMiddleware())
 	{
 
 		// Kullanıcı bilgilerini alma
 		prodected.GET("/:id", controller.GetUser)
-	
+
 		// Kullanıcı bilgilerini güncelleme
 		prodected.PUT("/:id", controller.UpdateUser)
-	
+
 		// Kullanıcıyı silme
 		prodected.DELETE("/:id", controller.DeleteUser)
-	
+
 		// Sifre Degistirme
 		prodected.PUT("/:id/reset-password", controller.ResetUserPassword)
-	
+
 		// Tüm kullanıcıları listeleme
 		prodected.GET("/all", controller.ListUsers)
 	}
