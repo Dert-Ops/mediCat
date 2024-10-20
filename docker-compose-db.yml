@@ -42,4 +42,3 @@ volumes:
 
 networks:
   medicat_network:
-    external: true

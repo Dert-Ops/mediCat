@@ -6,12 +6,6 @@ time="2024-10-02T02:07:52Z" level=info msg="Server is running on port 8080"
 {"level":"debug","msg":"Database connection successful.","time":"2024-10-02 06:53:41"}
 {"level":"info","msg":"Server is running on port 8080","time":"2024-10-02 06:53:41"}
 {"level":"fatal","msg":"Failed Connect RABBİT MınaKoyim dial tcp 172.18.0.3:15672: connect: connection refused","time":"2024-10-02 06:58:22"}
-{"level":"fatal","msg":"Failed Connect RABBİT MınaKoyim Exception (501) Reason: \"EOF\"","time":"2024-10-02 06:58:53"}
-{"level":"fatal","msg":"Failed Connect RABBİT MınaKoyim Exception (501) Reason: \"EOF\"","time":"2024-10-02 06:59:36"}
-{"level":"fatal","msg":"Failed Connect RABBİT MınaKoyim dial tcp 172.18.0.2:15672: connect: connection refused","time":"2024-10-02 06:59:53"}
-{"level":"fatal","msg":"Failed Connect RABBİT MınaKoyim Exception (501) Reason: \"EOF\"","time":"2024-10-02 07:01:39"}
-{"level":"fatal","msg":"Failed Connect RABBİT MınaKoyim dial tcp 172.18.0.2:5672: connect: connection refused","time":"2024-10-02 07:03:49"}
-{"level":"fatal","msg":"Failed Connect RABBİT MınaKoyim dial tcp 172.18.0.2:5672: connect: connection refused","time":"2024-10-02 07:03:59"}
 {"level":"debug","msg":"Database connection successful.","time":"2024-10-02 07:06:53"}
 {"level":"info","msg":"Server is running on port 8080","time":"2024-10-02 07:06:53"}
 {"level":"trace","msg":"Kullanıcı oluşturuldu: {{1018 2024-10-02 09:16:13.620290556 +0000 UTC 2024-10-02 09:16:13.620290556 +0000 UTC {0001-01-01 00:00:00 +0000 UTC false}} Berkay asd@asd.com $2a$10$mXHzq5t7Y.6EZKeNd/iGI.9ZwJBuR9qnU2mjzwS05wfAEI75xhPku  sasd 0  false      }","time":"2024-10-02 12:16:13"}
@@ -48,3 +42,258 @@ time="2024-10-02T02:07:52Z" level=info msg="Server is running on port 8080"
 {"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-02 16:29:24"}
 {"level":"warning","msg":"Error loading .env file","time":"2024-10-02 16:29:24"}
 {"level":"info","msg":"User Service is running on port 8080","time":"2024-10-02 16:29:24"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-03 22:55:36"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-03 22:55:36"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-03 22:55:36"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-03 23:00:05"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-03 23:00:05"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-03 23:00:05"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-03 23:03:02"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-03 23:03:02"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-03 23:03:02"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-05 05:30:47"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-05 05:30:47"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-05 05:30:47"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-05 05:32:17"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-05 05:32:17"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-05 05:32:17"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-05 05:35:54"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-05 05:35:54"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-05 05:35:54"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-05 05:45:17"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-05 05:45:17"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-05 05:45:17"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-05 06:00:08"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-05 06:00:08"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-05 06:00:08"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-05 06:02:49"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-05 06:02:49"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-05 06:02:49"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-05 06:17:15"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-05 06:17:15"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-05 06:17:15"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-05 06:25:32"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-05 06:25:32"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-05 06:25:32"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-05 06:28:04"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-05 06:28:04"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-05 06:28:04"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-05 06:33:03"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-05 06:33:03"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-05 06:33:03"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-05 06:42:58"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-05 06:42:58"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-05 06:42:58"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-05 06:48:09"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-05 06:48:09"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-05 06:48:09"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-05 06:49:35"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-05 06:49:35"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-05 06:49:35"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-05 06:56:25"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-05 06:56:25"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-05 06:56:25"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-06 00:03:10"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-06 00:03:10"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-06 00:03:10"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-06 00:52:07"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-06 00:52:07"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-06 00:52:07"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-06 00:59:08"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-06 00:59:08"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-06 00:59:08"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-06 01:03:02"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-06 01:03:02"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-06 01:03:02"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-06 01:13:47"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-06 01:13:47"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-06 01:13:47"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-15 13:56:43"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-15 13:56:43"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-15 13:56:43"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-15 14:32:26"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-15 14:32:26"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-15 14:32:26"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-19 22:13:12"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-19 22:13:12"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-19 22:13:12"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-19 22:21:47"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-19 22:21:47"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-19 22:21:47"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-19 22:26:37"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-19 22:26:37"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-19 22:26:37"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-19 22:38:52"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-19 22:38:52"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-19 22:38:52"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-19 22:39:26"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-19 22:39:26"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-19 22:39:26"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-19 22:49:36"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-19 22:49:36"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-19 22:49:36"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-19 22:59:30"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-19 22:59:30"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-19 22:59:30"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-19 23:04:13"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-19 23:04:13"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-19 23:04:13"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-19 23:13:19"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-19 23:13:19"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-19 23:13:19"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-19 23:13:58"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-19 23:13:58"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-19 23:13:58"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-19 23:41:26"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-19 23:41:26"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-19 23:41:26"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-19 23:50:34"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-19 23:50:34"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-19 23:50:34"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-19 23:53:35"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-19 23:53:35"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-19 23:53:35"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-19 23:58:11"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-19 23:58:11"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-19 23:58:11"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 00:07:14"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 00:07:14"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 00:07:14"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 00:15:16"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 00:15:16"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 00:15:16"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 00:18:30"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 00:18:30"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 00:18:30"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 00:24:09"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 00:24:09"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 00:24:09"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 00:28:28"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 00:28:28"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 00:28:28"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 00:33:36"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 00:33:36"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 00:33:36"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 00:40:39"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 00:40:39"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 00:40:39"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 00:42:54"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 00:42:54"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 00:42:54"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 00:44:10"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 00:44:10"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 00:44:10"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 00:46:33"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 00:46:33"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 00:46:33"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 00:51:41"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 00:51:41"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 00:51:41"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 00:51:47"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 00:51:47"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 00:51:47"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 00:53:41"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 00:53:41"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 00:53:41"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 00:57:27"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 00:57:27"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 00:57:27"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 01:12:37"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 01:12:37"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 01:12:37"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 01:14:52"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 01:14:52"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 01:14:52"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 01:15:57"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 01:15:57"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 01:15:57"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 01:23:21"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 01:23:21"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 01:23:21"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 01:29:07"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 01:29:07"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 01:29:07"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 01:33:00"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 01:33:00"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 01:33:00"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 01:34:53"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 01:34:53"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 01:34:53"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 01:49:30"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 01:49:30"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 01:49:30"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 01:52:54"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 01:52:54"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 01:52:54"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 01:54:17"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 01:54:17"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 01:54:17"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 02:01:46"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 02:01:46"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 02:01:46"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 02:04:43"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 02:04:43"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 02:04:43"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 02:10:31"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 02:10:31"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 02:10:31"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 02:15:19"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 02:15:19"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 02:15:19"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 02:19:01"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 02:19:01"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 02:19:01"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 02:24:20"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 02:24:20"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 02:24:20"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 02:26:18"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 02:26:18"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 02:26:18"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 02:28:31"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 02:28:31"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 02:28:31"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 02:47:27"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 02:47:27"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 02:47:27"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 02:52:11"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 02:52:11"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 02:52:11"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 03:04:53"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 03:04:53"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 03:04:53"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 03:15:46"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 03:15:46"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 03:15:46"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 03:20:29"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 03:20:29"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 03:20:29"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 03:22:56"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 03:22:56"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 03:22:56"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 03:30:54"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 03:30:54"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 03:30:54"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 03:33:37"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 03:33:37"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 03:33:37"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 03:38:08"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 03:38:08"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 03:38:08"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 03:40:08"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 03:40:08"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 03:40:08"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 03:52:00"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 03:52:00"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 03:52:00"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 03:55:18"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 03:55:18"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 03:55:18"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 10:58:36"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 10:58:36"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 10:58:36"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 11:16:31"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 11:16:31"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 11:16:31"}
+{"level":"warning","msg":"No .env file found, continuing without loading environment variables.","time":"2024-10-20 11:30:14"}
+{"level":"warning","msg":"Error loading .env file","time":"2024-10-20 11:30:14"}
+{"level":"info","msg":"User Service is running on port 8080","time":"2024-10-20 11:30:14"}

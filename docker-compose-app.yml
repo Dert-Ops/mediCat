@@ -15,6 +15,8 @@ services:
       - medicat_network
     ports:
       - "${API_GATEWAY_PORT}:${DEFAULT_GO_PORT}"
+
+      # volume eklencek env file icin
   
   media_service:
     build: ./media_service
@@ -44,4 +46,3 @@ services:
 
 networks:
   medicat_network:
-    external: true
