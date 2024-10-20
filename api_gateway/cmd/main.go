@@ -9,7 +9,7 @@ import (
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"github.com/joho/godotenv"
+	"gitlab.com/dert-ops/mediCat/mediCat-Dev.git/cmd/config"
 	"gitlab.com/dert-ops/mediCat/mediCat-Dev.git/cmd/middleware"
 )
 
@@ -77,15 +77,12 @@ func proxyHandler(c *gin.Context) {
 
 func main() {
 	// Load environment variables from .env file if it exists
-	err := godotenv.Load(".env")
-	if err != nil {
-		log.Println("No .env file found, continuing without loading environment variables from file.")
-	}
+	config.LoadEnv()
 
 	// Set up Gin router with CORS
 	router := gin.Default()
 	router.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"*"},
+		AllowOrigins:     []string{"http://45.9.30.65"},
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowHeaders:     []string{"Origin", "Authorization", "Content-Type"},
 		ExposeHeaders:    []string{"Content-Length"},
@@ -98,11 +95,12 @@ func main() {
 	})
 
 	router.POST("/auth/signup", proxyHandler)
-	router.GET("/auth/signin", proxyHandler)
+	router.POST("/auth/signin", proxyHandler)
 
 	JWTProtected := router.Group("/")
 	JWTProtected.Use(middleware.AuthMiddleware())
 	{
+		log.Println("[!!!]  middleware gecildi")
 		JWTProtected.Any("/:service/*any", proxyHandler)
 	}
 
